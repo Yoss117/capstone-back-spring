@@ -45,7 +45,6 @@ public class JWTFilter extends OncePerRequestFilter {
 
             User user = new User();
             user.setUserCode(userCode);
-            user.setUserId(userId);
             user.setRole(role);
             CustomUserDetails customUserDetails = new CustomUserDetails(user);
 

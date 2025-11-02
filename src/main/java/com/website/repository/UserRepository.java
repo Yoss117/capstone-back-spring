@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    boolean existsByUserId(String userId);
 
     boolean existsByNickname(String nickname);
 
-    User findByUserId(String userId);
+    @Query("SELECT u FROM User u WHERE u.nickname = :nickname")
+    User findByUserNickname(String nickname);
 
     Optional<User> findByOauthId(Long userCode);
 }

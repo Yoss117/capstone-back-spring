@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User userData = userRepository.findByUserId(username);   //유저의 정보를 DB 에서 조회해오고,
+        User userData = userRepository.findByUserNickname(username);   //유저의 정보를 DB 에서 조회해오고,
         if(userData != null){
             userData.setLastLoginTime(LocalDateTime.now());
             userRepository.save(userData);

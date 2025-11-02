@@ -2,10 +2,7 @@ package com.website.chat.controller;
 
 import com.website.chat.service.ChatService;
 import com.website.entity.ChatMessage;
-import com.website.user.dto.CustomUserDetails;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

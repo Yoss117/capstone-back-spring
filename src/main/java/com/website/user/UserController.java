@@ -17,13 +17,4 @@ public class UserController {
         String jwt = userService.socialKaKaoLogin(code);
         return ResponseEntity.ok().body(jwt);
     }
-    @PostMapping("/signup")
-    public ResponseEntity<String> signup(SignupRequestDto signupRequestDto){
-        System.out.println(signupRequestDto);
-        try {
-            return ResponseEntity.status(HttpStatus.CREATED).body(userService.signup(signupRequestDto));
-        } catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
 }
