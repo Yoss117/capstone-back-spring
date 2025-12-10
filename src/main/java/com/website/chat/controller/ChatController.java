@@ -2,6 +2,8 @@ package com.website.chat.controller;
 
 import com.website.chat.dto.ChatMessage;
 import com.website.chat.dto.ConversationDto;
+import com.website.chat.dto.EmotionDto;
+import com.website.chat.dto.GrowthDto;
 import com.website.chat.service.ChatService;
 import com.website.entity.AnalysisResult;
 import com.website.entity.Message;
@@ -57,5 +59,19 @@ public class ChatController {
     ){
         List<AnalysisResult> result = chatService.getMonthlyAnalysis(user.getUserCode(), year, month);
         return ResponseEntity.ok().body(result);
+    }
+    @GetMapping("/growth")
+    public ResponseEntity<GrowthDto> getGrowth(@AuthenticationPrincipal CustomUserDetails user){
+        GrowthDto dto = chatService.getGrowth(user.getUserCode());
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping("/emotion")
+    public ResponseEntity<EmotionDto> getEmotion(
+            @AuthenticationPrincipal CustomUserDetails user,
+            @RequestParam int year,
+            @RequestParam int month){
+        EmotionDto dto = chatService.getEmotion(user.getUserCode(), year, month);
+        return ResponseEntity.ok().body(dto);
     }
 }

@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface AnalysisResultRepository extends JpaRepository<AnalysisResult, Long> {
     List<AnalysisResult> findAllByUserCodeAndCreateAtBetween(Long userCode, LocalDateTime start, LocalDateTime end);
+
+    List<AnalysisResult> findAllByUserCode(Long userCode);
 }
